@@ -47,7 +47,7 @@ struct TuneDPWResult
     data::DataFrame
 end
 TuneDPW(::Type{VDPTagMDP}) = TuneDPW(VDPTagMDP(), 10, 
-                                       [2000],  #n_iters
+                                       [500],  #n_iters
                                        10, #max_steps 
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_actions
                                        [0.1,0.25,0.5,0.75,0.9], #alpha_actions
@@ -55,7 +55,7 @@ TuneDPW(::Type{VDPTagMDP}) = TuneDPW(VDPTagMDP(), 10,
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_states
                                        [0.1,0.25,0.5,0.75,0.9]) #alpha_states
 TuneDPW(::Type{MountainCar}) = TuneDPW(MountainCar(), 10, 
-                                       [500],  #n_iters
+                                       [1000],  #n_iters
                                        20, #max_steps 
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_actions
                                        [0.1,0.25,0.5,0.75,0.9], #alpha_actions
