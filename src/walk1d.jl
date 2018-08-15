@@ -9,9 +9,9 @@ function MCTS.DPWBandit(mdp::Walk1DMDP.Walk1D; kwargs...)
     DPWBandit(; 
         enable_action_pw=true,
         check_repeat_action=true,
-        exploration_constant=0.5,
-        k_action=2.0,
-        alpha_action=0.5,
+        exploration_constant=0.25,
+        k_action=10.0,
+        alpha_action=0.25,
         kwargs...)
 end
 function MCTS.ModularSolver(mdp::Walk1DMDP.Walk1D, b::ModularBandit, seed=0;
@@ -21,8 +21,8 @@ function MCTS.ModularSolver(mdp::Walk1DMDP.Walk1D, b::ModularBandit, seed=0;
         n_iterations=100,
         bandit=b,
         depth=mdp.p.t_max,
-        k_state=0.5,
-        alpha_state=0.75,
+        k_state=0.1,
+        alpha_state=0.5,
         keep_tree=true,
         check_repeat_state=true,
         rng=rng,

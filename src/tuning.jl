@@ -46,7 +46,7 @@ struct TuneDPWResult
     title::String
     data::DataFrame
 end
-TuneDPW(::Type{Walk1D}) = TuneDPW(Walk1D(), 100, 
+TuneDPW(::Type{Walk1D}) = TuneDPW(Walk1D(), 200, 
                                        [300],  #n_iters
                                        20, #max_steps 
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_actions
@@ -54,7 +54,7 @@ TuneDPW(::Type{Walk1D}) = TuneDPW(Walk1D(), 100,
                                        [0.25,0.5,0.75,1.0], #ec
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_states
                                        [0.0,0.1,0.25,0.5,0.75,0.9]) #alpha_states
-TuneDPW(::Type{VDPTagMDP}) = TuneDPW(VDPTagMDP(), 100, 
+TuneDPW(::Type{VDPTagMDP}) = TuneDPW(VDPTagMDP(), 500, 
                                        [500],  #n_iters
                                        10, #max_steps 
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_actions
@@ -62,7 +62,7 @@ TuneDPW(::Type{VDPTagMDP}) = TuneDPW(VDPTagMDP(), 100,
                                        [0.25,0.5,0.75,1.0], #ec
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_states
                                        [0.1,0.25,0.5,0.75,0.9]) #alpha_states
-TuneDPW(::Type{MountainCar}) = TuneDPW(MountainCar(), 10, 
+TuneDPW(::Type{MountainCar}) = TuneDPW(MountainCar(), 20, 
                                        [1000],  #n_iters
                                        20, #max_steps 
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_actions
@@ -70,7 +70,7 @@ TuneDPW(::Type{MountainCar}) = TuneDPW(MountainCar(), 10,
                                        [0.25,0.5,0.75,1.0], #ec
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_states
                                        [0.1,0.25,0.5,0.75,0.9]) #alpha_states
-TuneDPW(::Type{LightDark2D}) = TuneDPW(LightDark2D(), 100, 
+TuneDPW(::Type{LightDark2D}) = TuneDPW(LightDark2D(), 200, 
                                        [500],  #n_iters
                                        10, #max_steps 
                                        [0.1,0.5,1.0,2.0,5.0,10.0], #k_actions
