@@ -1,4 +1,10 @@
 
+function MCTS.RandomBandit(mdp::InvertedPendulum; kwargs...)
+    RandomBandit(; 
+        enable_action_pw=true,
+        check_repeat_action=true,
+        kwargs...)
+end
 function MCTS.DPWBandit(mdp::InvertedPendulum; kwargs...)
     DPWBandit(; 
         enable_action_pw=true,

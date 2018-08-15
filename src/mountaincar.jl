@@ -1,4 +1,13 @@
 
+function MCTS.RandomBandit(mdp::MountainCar; kwargs...)
+    RandomBandit(; 
+        enable_action_pw=true,
+        check_repeat_action=true,
+        exploration_constant=1.0,
+        k_action=10.0,
+        alpha_action=0.5,
+        kwargs...)
+end
 function MCTS.DPWBandit(mdp::MountainCar; kwargs...)
     DPWBandit(; 
         enable_action_pw=true,
