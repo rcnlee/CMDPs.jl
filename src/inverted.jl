@@ -14,6 +14,20 @@ function MCTS.DPWBandit(mdp::InvertedPendulum; kwargs...)
         alpha_action=0.5,
         kwargs...)
 end
+function MCTS.CBTSBandit(mdp::InvertedPendulum; kwargs...)
+    CBTSBandit(; 
+        enable_action_pw=true,
+        check_repeat_action=true,
+        exploration_constant=1.0,
+        A_max=20,
+        n_proposes=100,
+        log_length_scale=0.0,
+        log_signal_sigma=0.0,
+        log_obs_noise=-1.0,
+        action_dims=2,
+        n_sig=2.0,  #number of standard deviations for GP-UCB
+        kwargs...)
+end
 function MCTS.ModularSolver(mdp::InvertedPendulum, b::ModularBandit, seed=0; 
                             kwargs...) 
     rng = MersenneTwister(seed)
