@@ -25,7 +25,7 @@ end
 
 @with_kw struct RewardvsN 
     mdp = Walk1D()
-    bandits=[DPWBandit,RandomBandit]
+    bandits=[DPWBandit,RandomBandit,CBTSBandit]
     n_seeds=5
     n_iters=[10,25,50]
     max_steps=20
@@ -36,12 +36,12 @@ struct RewardvsNResult
 end
 function RewardvsN(::Type{Walk1D}) 
     mdp = Walk1D()
-    RewardvsN(mdp, [DPWBandit,RandomBandit], 200, [10,20,50,100,200,400,700,1000,1250], mdp.p.t_max)
+    RewardvsN(mdp, [DPWBandit,RandomBandit,CBTSBandit], 200, [10,20,50,100,200,400,700,1000,1250], mdp.p.t_max)
 end
-RewardvsN(::Type{VDPTagMDP}) = RewardvsN(VDPTagMDP(), [DPWBandit,RandomBandit], 500, [10,50,100,200,500,1000,1500,2000,2500,3000], 10)
-RewardvsN(::Type{InvertedPendulum}) = RewardvsN(InvertedPendulum(), [DPWBandit,RandomBandit], 20, [10,50,100,200,500,1000], 100)
-RewardvsN(::Type{MountainCar}) = RewardvsN(MountainCar(), [DPWBandit,RandomBandit], 20, [100,500,1000,2000,5000,10000], 20)
-RewardvsN(::Type{LightDark2D}) = RewardvsN(LightDark2D(), [DPWBandit,RandomBandit], 200, [50,100,200,500,1000,1500,2000], 10)
+RewardvsN(::Type{VDPTagMDP}) = RewardvsN(VDPTagMDP(), [DPWBandit,RandomBandit,CBTSBandit], 500, [10,50,100,200,500,1000,1500,2000,2500,3000], 10)
+RewardvsN(::Type{InvertedPendulum}) = RewardvsN(InvertedPendulum(), [DPWBandit,RandomBandit,CBTSBandit], 20, [10,50,100,200,500,1000], 100)
+RewardvsN(::Type{MountainCar}) = RewardvsN(MountainCar(), [DPWBandit,RandomBandit,CBTSBandit], 20, [100,500,1000,2000,5000,10000], 20)
+RewardvsN(::Type{LightDark2D}) = RewardvsN(LightDark2D(), [DPWBandit,RandomBandit,CBTSBandit], 200, [50,100,200,500,1000,1500,2000], 10)
 
 function generate_sim_q(study::RewardvsN)
     q = []
@@ -60,11 +60,12 @@ function run_study(study::RewardvsN)
     end
     RewardvsNResult(string(study.mdp), df)
 end
-@recipe function plot(result::RewardvsNResult)
+@recipe function plot(result::RewardvsNResult, more_results::RewardvsNResult...)
     title := result.title
     xlabel := "number of iterations"
     ylabel := "reward"
-    df = aggregate(result.data, [:alg, :n_iters], [mean, std])[[:alg, :n_iters, :r_total_mean, :r_total_std]]
+    data = vcat(result.data, more_results...)
+    df = aggregate(data, [:alg, :n_iters], [mean, std])[[:alg, :n_iters, :r_total_mean, :r_total_std]]
     for dd in groupby(df, :alg) 
         @series begin
             dd = sort(dd[:], :n_iters)
