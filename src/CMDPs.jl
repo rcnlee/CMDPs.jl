@@ -3,6 +3,7 @@ module CMDPs
 export generate_sim_q, run_study
 export RewardvsN, RewardvsNResult
 export TuneDPW, TuneDPWResult, report 
+export TuneCBTS, TuneCBTSResult
 
 using POMDPs, POMDPToolbox, MCTS
 using Parameters, DataFrames

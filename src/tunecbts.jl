@@ -3,8 +3,8 @@ struct TuneCBTSSim
     seed::Int
     n_iters::Int
     max_steps::Int
-    A_max::Float64
-    n_proposes::Float64
+    A_max::Int
+    n_proposes::Int
     log_length_scale::Float64
     log_signal_sigma::Float64
     log_obs_noise::Float64
