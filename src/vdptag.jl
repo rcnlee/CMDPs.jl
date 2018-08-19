@@ -24,7 +24,7 @@ function MCTS.CBTSBandit(mdp::VDPTagMDP; kwargs...)
         log_length_scale=0.0,
         log_signal_sigma=0.0,
         log_obs_noise=-1.0,
-        action_dims=2.0,
+        action_dims=1,
         n_sig=2.0,  #number of standard deviations for GP-UCB
         kwargs...)
 end

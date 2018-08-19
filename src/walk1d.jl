@@ -40,11 +40,28 @@ function MCTS.CBTSBandit(mdp::Walk1DMDP.Walk1D; kwargs...)
         enable_action_pw=true,
         check_repeat_action=true,
         exploration_constant=1.0,
-        A_max=10,
+        A_max=20,
         n_proposes=100,
         log_length_scale=0.0,
         log_signal_sigma=0.0,
         log_obs_noise=-1.0,
+        fit_qs=false,
+        action_dims=1,
+        n_sig=2.0,  #number of standard deviations for GP-UCB
+        kwargs...)
+end
+function MCTS.CBTSDPWBandit(mdp::Walk1DMDP.Walk1D; kwargs...)
+    CBTSDPWBandit(; 
+        enable_action_pw=true,
+        check_repeat_action=true,
+        exploration_constant=1.0,
+        k_action=1.0,
+        alpha_action=0.5,
+        n_proposes=100,
+        log_length_scale=0.0,
+        log_signal_sigma=0.0,
+        log_obs_noise=-1.0,
+        fit_qs=false,
         action_dims=1,
         n_sig=2.0,  #number of standard deviations for GP-UCB
         kwargs...)

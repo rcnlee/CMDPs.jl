@@ -2,3 +2,8 @@
 *.jl.*.cov
 *.jl.mem
 *.swp
+*.pdf
+*.gif
+*.bson
+.DS_Store
+.ipynb_checkpoints
