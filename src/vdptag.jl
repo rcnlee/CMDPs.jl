@@ -24,7 +24,23 @@ function MCTS.CBTSBandit(mdp::VDPTagMDP; kwargs...)
         log_length_scale=0.0,
         log_signal_sigma=0.0,
         log_obs_noise=-1.0,
-        action_dims=2.0,
+        action_dims=1,
+        n_sig=2.0,  #number of standard deviations for GP-UCB
+        kwargs...)
+end
+function MCTS.CBTSDPWBandit(mdp::VDPTagMDP; kwargs...)
+    CBTSDPWBandit(; 
+        enable_action_pw=true,
+        check_repeat_action=true,
+        exploration_constant=2.0,
+        k_action=10.0,
+        alpha_action=0.5,
+        n_proposes=500,
+        log_length_scale=0.0,
+        log_signal_sigma=0.0,
+        log_obs_noise=-1.0,
+        fit_qs=false,
+        action_dims=1,
         n_sig=2.0,  #number of standard deviations for GP-UCB
         kwargs...)
 end

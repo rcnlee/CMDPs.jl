@@ -20,6 +20,7 @@ include("lightdark2d.jl")
 include("sim.jl")
 include("studies.jl")
 include("tuning.jl")
+include("observers.jl")
 
 
 
