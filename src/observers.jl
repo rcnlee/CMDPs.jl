@@ -56,8 +56,3 @@ function Plots.animate(o::AQObserver, fname="./aqobserver.gif"; fps=2, ylim=noth
     gif(anim, fname; fps=fps)
 end
 
-function kwargs_get(kwargs::Vector, key::Symbol)
-    i = findfirst(x->x[1]==key, kwargs)
-    i == 0 && error("key not found")
-    kwargs[i][2]
-end

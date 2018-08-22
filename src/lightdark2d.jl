@@ -40,7 +40,7 @@ function MCTS.CBTSDPWBandit(mdp::LightDark2D; kwargs...)
         log_signal_sigma=0.0,
         log_obs_noise=-1.0,
         fit_qs=false,
-        action_dims=1,
+        action_dims=2,
         n_sig=2.0,  #number of standard deviations for GP-UCB
         kwargs...)
 end
